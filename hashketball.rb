@@ -1,4 +1,6 @@
 # Write your code below game_hash
+require "pry"
+
 def game_hash
   {
     home: {
@@ -127,3 +129,30 @@ def game_hash
 end
 
 # Write code here
+def team_names
+  hash = game_hash
+  array = []
+  hash.each do |location, attributes|
+    attributes.each do |attribute, info|
+      if attribute == :team_name
+        array << info
+      end
+    end
+  end
+  return array
+end
+def team_colors(team_name)
+  hash = game_hash
+  array = []
+  hash.each do |location, attributes|
+    if hash[location].values.include?(team_name)
+      attributes.each do |attribute, info|
+        if attribute == :colors
+          return info
+        end
+      end
+    end
+  end
+end
+
+
